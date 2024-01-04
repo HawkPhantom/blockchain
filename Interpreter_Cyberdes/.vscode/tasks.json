@@ -10,7 +10,7 @@
                 "/nologo",
                 "/std:c++17",
                 "/Fe${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "${workspaceFolder}\\Test\\Add_Test.cpp",
+                "${file}",
                 "${workspaceFolder}\\lib\\Interpreter.cpp",
                 "${workspaceFolder}\\lib\\OpCode.cpp",
                 "${workspaceFolder}\\lib\\ArithmeticOperations.cpp",

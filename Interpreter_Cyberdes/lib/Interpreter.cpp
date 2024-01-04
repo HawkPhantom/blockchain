@@ -23,7 +23,9 @@ void Interpreter::runCode(const std::vector<std::string>& code) {
             case PUSH:
                 programCounter++;
                 if (isNumber(code[programCounter])) {
-                    stack.push_back(std::stoi(code[programCounter]));
+                    stack.push_back(std::stof(code[programCounter]));
+                } else {
+                    stack.push_back(code[programCounter]);
                 }
                 break;
 
