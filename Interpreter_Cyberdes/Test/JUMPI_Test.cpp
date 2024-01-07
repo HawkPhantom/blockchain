@@ -3,7 +3,7 @@
 #include <variant>
 
 int main() {
-    // Test code with JUMPI operation and a condition of '0' (false)
+    // Test code with JUMPI operation and a condition of '1' (true), it will jump to the 8th instruction, then print "jump successful" and stop.
     std::vector<std::string> code = {"PUSH", "1", "PUSH", "8", "JUMPI", "PUSH", "jump not successful", "STOP", "PUSH", "jump successful", "STOP"};
 
     Interpreter interpreter;
