@@ -3,7 +3,7 @@
 
 #include <map>
 #include <string>
-#include "BlockHeaders.h" // Include your BlockHeaders definition here
+#include "blockHeaders.h" // Include your BlockHeaders definition here
 
 BlockHeaders convertToBlockHeaders(const std::map<std::string, std::string>& genesisData);
 

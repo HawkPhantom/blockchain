@@ -1,7 +1,7 @@
 #ifndef BLOCK_H
 #define BLOCK_H
 
-#include "BlockHeaders.h"
+#include "blockHeaders.h"
 #include <filesystem>
 #include <map>
 #include <string>
