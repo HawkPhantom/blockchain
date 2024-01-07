@@ -1,50 +1,33 @@
 #include <iostream>
 #include <filesystem>
-
 #include "../lib/ConfigReader.h"
 #include "../lib/HeadersConverter.h"
 #include "../lib/Block.h"
+#include "../lib/Blockchain.h"  // Include your Blockchain header
+
+// Function to display the contents of a block
+
+void printBlock(const Block& block) {
+    const BlockHeaders& headers = block.getHeaders();
+    std::cout << "Printing Block..." << std::endl;
+    std::cout << "Block: { "
+              << "parentHash: " << headers.parentHash
+              << ", beneficiary: " << headers.beneficiary
+              << ", difficulty: " << headers.difficulty
+              << ", number: " << headers.number
+              << ", timestamp: " << headers.timestamp
+              << ", nonce: " << headers.nonce
+              << " }" << std::endl;
+}
 
 int main() {
-    try {
-        // Get the current working directory as a string
-        std::filesystem::path currentDir = std::filesystem::current_path();
-        std::string currentDirStr = currentDir.string();
+    Blockchain blockchain;
 
-        // Move one step back from the current directory
-        std::filesystem::path parentDir = currentDir.parent_path();
-        std::string parentDirStr = parentDir.string();
+    std::cout << "Blockchain initialized" << std::endl;
 
-        // Construct the full path to the "config" directory and "genesis.conf" file
-        std::string configDirStr = parentDirStr + "/config";
-        std::string configFileStr = configDirStr + "/genesis.conf";
-
-        std::cout << "Current Directory: " << currentDirStr << std::endl;
-        std::cout << "Parent Directory: " << parentDirStr << std::endl;
-        std::cout << "Config Directory: " << configDirStr << std::endl;
-
-        // Check if the "config" directory exists and "genesis.conf" is present
-        if (std::filesystem::is_directory(configDirStr) && std::filesystem::exists(configFileStr)) {
-            // Read the genesis configuration
-            std::map<std::string, std::string> genesisHeadersMap = readGenesisConfig(configFileStr);
-
-            // Convert the configuration data to BlockHeaders
-            BlockHeaders genesisHeaders = convertToBlockHeaders(genesisHeadersMap);
-
-            // Initialize the genesis block with the genesisHeaders
-            Block genesisBlock(genesisHeaders);
-
-            // Print the complete genesis block at once with cout
-            std::cout << "Genesis Block is Created " << std::endl;
-            std::cout << "Nonce: " << genesisBlock.getHeaders().nonce << std::endl;
-            std::cout << "Parent Hash: " << genesisBlock.getHeaders().parentHash << std::endl;
-        } else {
-            std::cerr << "Error: 'config' directory not found or 'genesis.conf' not found in the parent directory" << std::endl;
-            return 1;
-        }
-    } catch (const std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-        return 1;
+    // Iterate over the blockchain and print each block
+    for (const auto& block : blockchain.getChain()) {
+        printBlock(block);
     }
 
     return 0;
