@@ -26,11 +26,14 @@ std::string opCodeToString(OpCode opCode) {
         case SUB: return "SUB";
         case MUL: return "MUL";
         case DIV: return "DIV";
+        case MOD: return "MOD";
+        case ADDMOD: return "ADDMOD";
         case EQ: return "EQ";
         case LT: return "LT";
         case GT: return "GT";
         case AND: return "AND";
         case OR: return "OR";
+        case XOR: return "XOR";
         case NOT: return "NOT";
         case JUMP: return "JUMP";
         case JUMPI: return "JUMPI";

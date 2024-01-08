@@ -8,6 +8,8 @@ OpCode getOpCode(const std::string& op) {
     if (op == "SUB") return SUB;
     if (op == "MUL") return MUL;
     if (op == "DIV") return DIV;
+    if(op == "MOD") return MOD;
+    if (op == "ADDMOD") return ADDMOD;
     //Logic Operations
     if (op == "EQ") return EQ;
     if (op == "LT") return LT;
@@ -15,9 +17,11 @@ OpCode getOpCode(const std::string& op) {
     if (op == "AND") return AND;
     if (op == "OR") return OR;
     if (op == "NOT") return NOT;
+    if (op == "XOR") return XOR;
     //Jumper Operations
     if (op == "JUMP") return JUMP;
     if (op == "JUMPI") return JUMPI;
+
     
     return UNKNOWN;
 }

@@ -48,6 +48,20 @@ void Interpreter::runCode(const std::vector<std::string>& code) {
                 });
                 break;
 
+            case MOD:
+                performArithmeticOperation(stack, [](int a, int b) {
+                    if (b == 0) throw std::runtime_error("Division by zero");
+                    return a % b;
+                });
+                break;
+
+            case ADDMOD:
+                performArithmeticOperation_threeInput(stack, [](int a, int b, int c) {
+                    if (b == 0) throw std::runtime_error("Division by zero");
+                    return (a + b) % c;
+                });
+                break;
+
             case EQ:
                 performLogicOperation(stack, [](int a, int b) { return a == b; });
                 break;
@@ -70,6 +84,10 @@ void Interpreter::runCode(const std::vector<std::string>& code) {
 
             case NOT:
                 performLogicOperation(stack, [](int a, int b) { return !a; });
+                break;
+
+            case XOR:
+                performLogicOperation(stack, [](int a, int b) { return a ^ b; });
                 break;
 
             case JUMP:

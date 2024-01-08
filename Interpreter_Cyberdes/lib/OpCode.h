@@ -13,6 +13,8 @@ enum OpCode {
     SUB,
     MUL,
     DIV,
+    MOD,
+    ADDMOD,
     ///////////////////////
     //Logic Operations
     EQ,
@@ -21,6 +23,7 @@ enum OpCode {
     AND,
     OR,
     NOT,
+    XOR,
     ///////////////////////
     //Jumper Operations
     JUMP,
