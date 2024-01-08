@@ -21,6 +21,10 @@ void Interpreter::runCode(const std::vector<std::string>& code) {
             case STOP:
                 return;  // Normal termination
 
+            case PUSH0:
+                stack.push_back(0);
+                break;
+
             case PUSH:
                 programCounter++;
                 if (isNumber(code[programCounter])) {
@@ -135,6 +139,25 @@ void Interpreter::runCode(const std::vector<std::string>& code) {
                 performLogicOperation(stack, [](int a, int b) { return a ^ b; });
                 break;
 
+            case BYTE: 
+                performUnsignedArithmeticOperation(stack, [](unsigned int a, unsigned int b) {
+                    if (b > 31) throw std::runtime_error("Byte operation requires second operand to be less than 32");
+                    return (a >> (8 * b)) & 0xff;
+                });
+                break;
+            
+            case SHL:
+                shlOperation(stack);
+                break;
+            
+            case SHR:
+                shrOperation(stack);
+                break;
+
+            case PC:
+                stack.push_back(programCounter);
+                break;
+
             case JUMP:
                 handleJump(*this);
                 continue;
@@ -162,7 +185,7 @@ void Interpreter::runCode(const std::vector<std::string>& code) {
     }
 }
 
-std::variant<unsigned int, int, std::string> Interpreter::getLastStackValue() const {
+std::variant<unsigned int, int, size_t, std::string> Interpreter::getLastStackValue() const {
     if (!stack.empty()) {
         return stack.back();
     }

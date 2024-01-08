@@ -19,6 +19,7 @@ enum OpCode {
     MULMOD,
     SMOD,
     EXP,
+    POP,
     ///////////////////////
     //Logic Operations
     EQ,
@@ -29,6 +30,10 @@ enum OpCode {
     NOT,
     XOR,
     isZero,
+    BYTE,
+    SHL,
+    SHR,
+    PC,
     ///////////////////////
     //Jumper Operations
     JUMP,

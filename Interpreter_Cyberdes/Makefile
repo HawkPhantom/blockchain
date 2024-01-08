@@ -8,12 +8,12 @@ BUILD_DIR = build
 SRC_FILES = $(wildcard $(LIB_DIR)/*.cpp)
 OBJ_FILES = $(patsubst $(LIB_DIR)/%.cpp, $(LIB_DIR)/%.o, $(SRC_FILES))
 
-all: $(BUILD_DIR)/isZero_Test
+all: $(BUILD_DIR)/PC_Test
 
 $(LIB_DIR)/%.o: $(LIB_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/isZero_Test: $(TEST_DIR)/isZero_Test.cpp $(OBJ_FILES)
+$(BUILD_DIR)/PC_Test: $(TEST_DIR)/PC_Test.cpp $(OBJ_FILES)
 	@mkdir -p $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) $< -o $@ $(OBJ_FILES)
 

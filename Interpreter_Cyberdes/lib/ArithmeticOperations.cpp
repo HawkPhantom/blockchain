@@ -3,7 +3,7 @@
 #include <variant>
 #include "ArithmeticOperations.h" // Include the corresponding header file
 
-void performArithmeticOperation(std::vector<std::variant<unsigned int, int, std::string>>& stack, 
+void performArithmeticOperation(std::vector<std::variant<unsigned int, int, size_t, std::string>>& stack, 
                                 const std::function<int(int, int)>& operation) {
     if (stack.size() < 2) {
         throw std::runtime_error("Not enough elements in stack for arithmetic operation");
@@ -26,7 +26,7 @@ void performArithmeticOperation(std::vector<std::variant<unsigned int, int, std:
 }
 
 
-void performArithmeticOperation_threeInput (std::vector<std::variant<unsigned int, int, std::string>>& stack, 
+void performArithmeticOperation_threeInput (std::vector<std::variant<unsigned int, int, size_t, std::string>>& stack, 
                                             const std::function<int(int, int, int)>& operation) {
     if (stack.size() < 3) {
         throw std::runtime_error("Not enough elements in stack for arithmetic operation");
@@ -50,7 +50,7 @@ void performArithmeticOperation_threeInput (std::vector<std::variant<unsigned in
     }
 }
 
-void performUnsignedArithmeticOperation(std::vector<std::variant<unsigned int, int, std::string>>& stack, 
+void performUnsignedArithmeticOperation(std::vector<std::variant<unsigned int, int, size_t, std::string>>& stack, 
                                         const std::function<unsigned int(unsigned int, unsigned int)>& operation) {
     if (stack.size() < 2) {
         throw std::runtime_error("Not enough elements in stack for arithmetic operation");
@@ -70,7 +70,7 @@ void performUnsignedArithmeticOperation(std::vector<std::variant<unsigned int, i
     }
 }
 
-void performUnsignedArithmeticOperation_threeInput(std::vector<std::variant<unsigned int, int, std::string>>& stack, 
+void performUnsignedArithmeticOperation_threeInput(std::vector<std::variant<unsigned int, int, size_t, std::string>>& stack, 
                                                    const std::function<unsigned int(unsigned int, unsigned int, unsigned int)>& operation) {
     if (stack.size() < 3) {
         throw std::runtime_error("Not enough elements in stack for arithmetic operation");
