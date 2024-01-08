@@ -12,6 +12,8 @@ OpCode getOpCode(const std::string& op) {
     if(op == "MOD") return MOD;
     if (op == "ADDMOD") return ADDMOD;
     if (op == "MULMOD") return MULMOD;
+    if (op == "SMOD") return SMOD;
+    if (op == "EXP") return EXP;
     //Logic Operations
     if (op == "EQ") return EQ;
     if (op == "LT") return LT;

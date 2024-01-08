@@ -1,9 +1,10 @@
+#include <iostream>
+#include <stdexcept>
+#include <math.h>
 #include "Interpreter.h"
 #include "ArithmeticOperations.h"
 #include "StackOperations.h"
 #include "LogicOperations.h"
-#include <iostream>
-#include <stdexcept>
 #include "Utility.h"
 
 Interpreter::Interpreter() : programCounter(0) {}
@@ -83,6 +84,17 @@ void Interpreter::runCode(const std::vector<std::string>& code) {
                     if (b == 0) throw std::runtime_error("Division by zero");
                     return (a * b) % c;
                 });
+                break;
+
+            case SMOD: 
+                performArithmeticOperation(stack, [](int a, int b) {
+                    if (b == 0) throw std::runtime_error("Division by zero");
+                    return a % b;
+                });
+                break;
+
+            case EXP:
+                performUnsignedArithmeticOperation(stack, [](unsigned int a, unsigned int b) { return pow(a, b); });
                 break;
 
             case EQ:

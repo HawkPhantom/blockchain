@@ -17,6 +17,8 @@ enum OpCode {
     MOD,
     ADDMOD,
     MULMOD,
+    SMOD,
+    EXP,
     ///////////////////////
     //Logic Operations
     EQ,
