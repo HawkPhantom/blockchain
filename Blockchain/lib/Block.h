@@ -6,6 +6,7 @@
 #include <map>
 #include <string>
 #include <iostream>
+#include "../lib/Keccak256B.h"
 
 // Function declarations for reading and converting the genesis configuration
 std::map<std::string, std::string> readGenesisConfig(const std::string& configFileStr);
@@ -14,12 +15,10 @@ BlockHeaders convertToBlockHeaders(const std::map<std::string, std::string>& hea
 class Block {
 public:
     // Constructor
-    Block(const BlockHeaders& headers) : blockHeaders(headers) {}
+    Block(const BlockHeaders& headers);
 
-    // Static method to mine a new block
-    static void mineBlock(const Block& lastBlock) {
-        // Mining logic goes here
-    }
+    static Block mineBlock(const Block& lastBlock, const std::string& beneficiary);
+
 
     // Static method to create the genesis block
     static Block genesis() {

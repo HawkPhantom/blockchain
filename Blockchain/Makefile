@@ -18,12 +18,12 @@ BUILD_DIR = build
 SRC_FILES = $(wildcard $(LIB_DIR)/*.cpp)
 OBJ_FILES = $(patsubst $(LIB_DIR)/%.cpp, $(LIB_DIR)/%.o, $(SRC_FILES))
 
-all: $(BUILD_DIR)/CalculateBlockTargetHash_Test
+all: $(BUILD_DIR)/MineBlock_Test
 
 $(LIB_DIR)/%.o: $(LIB_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -I$(CRYPTOPP_INCLUDE_DIR) -I$(GMP_INCLUDE_DIR) -c $< -o $@
 
-$(BUILD_DIR)/CalculateBlockTargetHash_Test: $(TEST_DIR)/CalculateBlockTargetHash_Test.cpp $(OBJ_FILES)
+$(BUILD_DIR)/MineBlock_Test: $(TEST_DIR)/MineBlock_Test.cpp $(OBJ_FILES)
 	@mkdir -p $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -I$(CRYPTOPP_INCLUDE_DIR) -I$(GMP_INCLUDE_DIR) -L$(CRYPTOPP_LIB_DIR) -L$(GMP_LIB_DIR) $< -o $@ $(OBJ_FILES) -lcryptopp -lgmp
 

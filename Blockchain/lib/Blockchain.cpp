@@ -11,3 +11,7 @@ Blockchain::Blockchain() {
 const std::vector<Block>& Blockchain::getChain() const {
     return chain;
 }
+
+const Block& Blockchain::getLatestBlock() const {
+    return chain.back();
+}
