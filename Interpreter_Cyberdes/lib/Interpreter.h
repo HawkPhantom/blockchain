@@ -15,11 +15,11 @@ public:
     friend int handleJumpI(Interpreter& interpreter);
     
     void runCode(const std::vector<std::string>& code);
-    std::variant<int, std::string> getLastStackValue() const;
+    std::variant<unsigned int, int, size_t, std::string> getLastStackValue() const;
 
 private:
     std::vector<std::string> code;
-    std::vector<std::variant<int, std::string>> stack;
+    std::vector<std::variant<unsigned int, int, size_t, std::string>> stack;
     size_t programCounter;
 };
 

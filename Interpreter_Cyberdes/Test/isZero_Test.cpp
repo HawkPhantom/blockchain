@@ -4,7 +4,7 @@
 
 int main() {
     // Let's test for 4+8, here is our list of instructions
-    std::vector<std::string> code = {"PUSH", "4", "PUSH", "8", "ADD", "STOP"};
+    std::vector<std::string> code = {"PUSH", "0", "isZero", "STOP"};
 
     // Create an interpreter 
     Interpreter interpreter;
@@ -18,9 +18,6 @@ int main() {
     // If the last value is an int, print it
     if (std::holds_alternative<int>(lastValue)) {
         std::cout << "Last Stack Value (int): " << std::get<int>(lastValue) << std::endl;
-    } 
-    else if (std::holds_alternative<unsigned int>(lastValue)) {
-        std::cout << "Last Stack Value (unsigned int): " << std::get<unsigned int>(lastValue) << std::endl;
     } 
     // If the last value is a string, print it 
     else if (std::holds_alternative<std::string>(lastValue)) {
