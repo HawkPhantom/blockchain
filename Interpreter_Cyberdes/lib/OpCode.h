@@ -28,6 +28,7 @@ enum OpCode {
     OR,
     NOT,
     XOR,
+    isZero,
     ///////////////////////
     //Jumper Operations
     JUMP,

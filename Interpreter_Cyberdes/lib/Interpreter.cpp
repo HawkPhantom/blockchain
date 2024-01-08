@@ -37,6 +37,12 @@ void Interpreter::runCode(const std::vector<std::string>& code) {
                 }
                 break;
 
+            case POP:
+                if (stack.empty()) {
+                    throw std::runtime_error("Stack is empty");
+                }
+                stack.pop_back();
+                break;
 
             case ADD:
                 performUnsignedArithmeticOperation(stack, [](unsigned int a, unsigned int b) { return a + b; });
@@ -91,6 +97,10 @@ void Interpreter::runCode(const std::vector<std::string>& code) {
                     if (b == 0) throw std::runtime_error("Division by zero");
                     return a % b;
                 });
+                break;
+
+            case isZero:
+                isZeroOperation(stack);
                 break;
 
             case EXP:

@@ -22,6 +22,7 @@ OpCode getOpCode(const std::string& op) {
     if (op == "OR") return OR;
     if (op == "NOT") return NOT;
     if (op == "XOR") return XOR;
+    if (op == "isZero") return isZero;
     //Jumper Operations
     if (op == "JUMP") return JUMP;
     if (op == "JUMPI") return JUMPI;

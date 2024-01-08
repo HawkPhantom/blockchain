@@ -10,4 +10,6 @@
 void performLogicOperation(std::vector<std::variant<unsigned int, int, std::string>>& stack, 
                            const std::function<int(int, int)>& operation);
 
+void isZeroOperation(std::vector<std::variant<unsigned int, int, std::string>>& stack);
+
 #endif // LOGIC_OPERATIONS_H

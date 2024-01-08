@@ -32,6 +32,7 @@ std::string opCodeToString(OpCode opCode) {
         case MULMOD: return "MULMOD";
         case SMOD: return "SMOD";
         case EXP: return "EXP";
+
         case EQ: return "EQ";
         case LT: return "LT";
         case GT: return "GT";
@@ -39,6 +40,8 @@ std::string opCodeToString(OpCode opCode) {
         case OR: return "OR";
         case XOR: return "XOR";
         case NOT: return "NOT";
+        case isZero: return "isZero";
+
         case JUMP: return "JUMP";
         case JUMPI: return "JUMPI";
         default: return "Unknown OpCode";
