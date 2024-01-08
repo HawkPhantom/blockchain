@@ -7,7 +7,7 @@
 #include <string>
 #include <functional>
 
-void performLogicOperation(std::vector<std::variant<int, std::string>>& stack, 
+void performLogicOperation(std::vector<std::variant<unsigned int, int, std::string>>& stack, 
                            const std::function<int(int, int)>& operation);
 
 #endif // LOGIC_OPERATIONS_H

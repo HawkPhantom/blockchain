@@ -23,25 +23,41 @@ void Interpreter::runCode(const std::vector<std::string>& code) {
             case PUSH:
                 programCounter++;
                 if (isNumber(code[programCounter])) {
-                    stack.push_back(std::stoi(code[programCounter]));
+                    // Determine if the number is signed or unsigned
+                    if (code[programCounter][0] == '-') {
+                        // Number is signed
+                        stack.push_back(std::stoi(code[programCounter]));
+                    } else {
+                        // Number is unsigned
+                        stack.push_back(static_cast<unsigned int>(std::stoul(code[programCounter])));
+                    }
                 } else {
                     stack.push_back(code[programCounter]);
                 }
                 break;
 
+
             case ADD:
-                performArithmeticOperation(stack, [](int a, int b) { return a + b; });
+                performUnsignedArithmeticOperation(stack, [](unsigned int a, unsigned int b) { return a + b; });
                 break;
 
             case SUB:
-                performArithmeticOperation(stack, [](int a, int b) { return a - b; });
+                performUnsignedArithmeticOperation(stack, [](unsigned int a, unsigned int b) { return a - b; });
                 break;
 
             case MUL:
-                performArithmeticOperation(stack, [](int a, int b) { return a * b; });
+                performUnsignedArithmeticOperation(stack, [](unsigned int a, unsigned int b) { return a * b; });
                 break;
 
             case DIV:
+                performUnsignedArithmeticOperation(stack, [](unsigned int a, unsigned int b) {
+                    if (b == 0) throw std::runtime_error("Division by zero");
+                    return a / b;
+                });
+                break;
+
+            case SDIV:
+                //if a or be is unsigned, convert to signed
                 performArithmeticOperation(stack, [](int a, int b) {
                     if (b == 0) throw std::runtime_error("Division by zero");
                     return a / b;
@@ -49,7 +65,7 @@ void Interpreter::runCode(const std::vector<std::string>& code) {
                 break;
 
             case MOD:
-                performArithmeticOperation(stack, [](int a, int b) {
+                performUnsignedArithmeticOperation(stack, [](unsigned int a, unsigned int b) {
                     if (b == 0) throw std::runtime_error("Division by zero");
                     return a % b;
                 });
@@ -117,7 +133,7 @@ void Interpreter::runCode(const std::vector<std::string>& code) {
     }
 }
 
-std::variant<int, std::string> Interpreter::getLastStackValue() const {
+std::variant<unsigned int, int, std::string> Interpreter::getLastStackValue() const {
     if (!stack.empty()) {
         return stack.back();
     }

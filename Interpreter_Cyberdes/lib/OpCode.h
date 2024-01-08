@@ -13,6 +13,7 @@ enum OpCode {
     SUB,
     MUL,
     DIV,
+    SDIV,
     MOD,
     ADDMOD,
     ///////////////////////

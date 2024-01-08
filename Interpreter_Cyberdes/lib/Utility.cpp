@@ -26,6 +26,7 @@ std::string opCodeToString(OpCode opCode) {
         case SUB: return "SUB";
         case MUL: return "MUL";
         case DIV: return "DIV";
+        case SDIV: return "SDIV";
         case MOD: return "MOD";
         case ADDMOD: return "ADDMOD";
         case EQ: return "EQ";

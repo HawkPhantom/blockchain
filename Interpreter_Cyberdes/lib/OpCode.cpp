@@ -8,6 +8,7 @@ OpCode getOpCode(const std::string& op) {
     if (op == "SUB") return SUB;
     if (op == "MUL") return MUL;
     if (op == "DIV") return DIV;
+    if (op == "SDIV") return SDIV;
     if(op == "MOD") return MOD;
     if (op == "ADDMOD") return ADDMOD;
     //Logic Operations

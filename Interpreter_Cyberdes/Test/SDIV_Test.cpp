@@ -4,7 +4,7 @@
 
 int main() {
     // Let's test for 4+8, here is our list of instructions
-    std::vector<std::string> code = {"PUSH", "4", "PUSH", "8", "ADD", "STOP"};
+    std::vector<std::string> code = {"PUSH", "8", "PUSH", "4", "SDIV", "STOP"};
 
     // Create an interpreter 
     Interpreter interpreter;

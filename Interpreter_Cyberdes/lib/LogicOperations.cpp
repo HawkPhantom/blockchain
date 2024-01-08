@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include <variant>
 
-void performLogicOperation(std::vector<std::variant<int, std::string>>& stack, 
+void performLogicOperation(std::vector<std::variant<unsigned int, int, std::string>>& stack, 
                            const std::function<int(int, int)>& operation) {
     if (stack.size() < 2) {
         throw std::runtime_error("Not enough elements in stack for logic operation");
