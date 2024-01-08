@@ -16,6 +16,7 @@ enum OpCode {
     SDIV,
     MOD,
     ADDMOD,
+    MULMOD,
     ///////////////////////
     //Logic Operations
     EQ,

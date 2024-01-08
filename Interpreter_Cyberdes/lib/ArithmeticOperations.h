@@ -16,4 +16,7 @@ void performArithmeticOperation_threeInput (std::vector<std::variant<unsigned in
 void performUnsignedArithmeticOperation(std::vector<std::variant<unsigned int, int, std::string>>& stack, 
                                         const std::function<unsigned int(unsigned int, unsigned int)>& operation);
 
+void performUnsignedArithmeticOperation_threeInput(std::vector<std::variant<unsigned int, int, std::string>>& stack, 
+                                                   const std::function<unsigned int(unsigned int, unsigned int, unsigned int)>& operation);
+
 #endif // ARITHMETIC_OPERATIONS_H

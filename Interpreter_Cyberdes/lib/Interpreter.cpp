@@ -72,9 +72,16 @@ void Interpreter::runCode(const std::vector<std::string>& code) {
                 break;
 
             case ADDMOD:
-                performArithmeticOperation_threeInput(stack, [](int a, int b, int c) {
+                performUnsignedArithmeticOperation_threeInput(stack, [](unsigned int a, unsigned int b, unsigned int c) {
                     if (b == 0) throw std::runtime_error("Division by zero");
                     return (a + b) % c;
+                });
+                break;
+            
+            case MULMOD:
+                performUnsignedArithmeticOperation_threeInput(stack, [](unsigned int a, unsigned int b, unsigned int c) {
+                    if (b == 0) throw std::runtime_error("Division by zero");
+                    return (a * b) % c;
                 });
                 break;
 
