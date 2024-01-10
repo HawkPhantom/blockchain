@@ -5,6 +5,7 @@
 #include <filesystem>
 #include <map>
 #include <string>
+#include <sstream>
 #include <iostream>
 #include "../lib/Keccak256B.h"
 
@@ -19,6 +20,11 @@ public:
 
     static Block mineBlock(const Block& lastBlock, const std::string& beneficiary);
 
+    //calculate block hash from input block
+    
+    std::string calculateBlockHash(std::string q_block) const {
+        return Keccak256::hash(q_block);
+    }
 
     // Static method to create the genesis block
     static Block genesis() {

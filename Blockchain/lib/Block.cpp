@@ -27,7 +27,7 @@ Block Block::mineBlock(const Block& lastBlock, const std::string& beneficiary) {
     // Do While
     do {
         timestamp = std::chrono::system_clock::now().time_since_epoch().count();
-        parentHash = Keccak256::hash(lastBlock.getHeaders().parentHash);
+        parentHash = Keccak256::hash(lastBlock.getHeaders().toString());
         unsigned long long difficulty = lastBlock.getHeaders().difficulty + 1;
         unsigned long long number = lastBlock.getHeaders().number + 1;
 
@@ -44,18 +44,16 @@ Block Block::mineBlock(const Block& lastBlock, const std::string& beneficiary) {
 
         underTargetHash = Keccak256::hash(header + std::to_string(nonce));
 
-        while (underTargetHash >= target) {
-            nonce = distribution(generator);
-            underTargetHash = Keccak256::hash(header + std::to_string(nonce));
-        }
+        
+        nonce = distribution(generator);
+        underTargetHash = Keccak256::hash(header + std::to_string(nonce));
+        
 
         truncatedBlockHeaders.nonce = nonce;
 
-        return Block(truncatedBlockHeaders);
     } while (underTargetHash >= target);
 
     truncatedBlockHeaders.nonce = nonce;
 
     return Block(truncatedBlockHeaders);
 }
-

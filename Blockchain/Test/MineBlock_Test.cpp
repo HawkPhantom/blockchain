@@ -54,9 +54,13 @@ int main() {
     printBlock(newBlock);
 
     // Test 1: Check if the new block's parent hash matches the last block's hash
-    assert(newBlock.getHeaders().parentHash <= CalculateBlockTargetHash::calculate(lastBlock));
+    // In main function of your test code
+    assert(newBlock.getHeaders().parentHash == Keccak256::hash(lastBlock.getHeaders().toString()));
 
-    // Test 2: Check if the block number is correctly incremented
+    // Test 2: Check if the new block's hash is less than or equal to the target hash
+    assert(CalculateBlockTargetHash::calculate(newBlock) <= targetHash);
+
+    // Test 3: Check if the block number is correctly incremented
     assert(newBlock.getHeaders().number == lastBlock.getHeaders().number + 1);
 
     // Additional tests can be added as needed
